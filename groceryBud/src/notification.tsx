@@ -4,7 +4,7 @@ interface NotifyProps {
   type: string;
   msg: string;
   removeAlert: () => void;
-  list: string[];
+  list: unknown[];
 }
 
 const Notify: React.FC<NotifyProps> = ({ type, msg, removeAlert, list }) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import { BsTrash3Fill, BsFillPencilFill } from 'react-icons/bs';
 
 interface ListItem{
   id: string;
@@ -26,14 +26,14 @@ const GList: React.FC<GListProps> = ({ items, removeItem, editItem }) => {
                 className='edit-btn'
                 onClick={() => editItem(id)}
               >
-                <FaEdit />
+                <BsFillPencilFill />
               </button>
               <button
                 type='button'
                 className='delete-btn'
                 onClick={() => removeItem(id)}
               >
-                <FaTrash />
+                <BsTrash3Fill />
               </button>
             </div>
           </article>
