@@ -22,6 +22,7 @@ function App() {
   const [isEditing, setIsEditing] = useState(false);
   const [editID, setEditID] = useState<string | null>(null);
   const [alert, setAlert] = useState({ show: false, msg: '', type: '' });
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!name) {
@@ -70,11 +71,12 @@ function App() {
   useEffect(() => {
     localStorage.setItem('list', JSON.stringify(list));
   }, [list]);
+
   return (
+  <body>
+       {alert.show && <Notify {...alert} removeAlert={showAlert} list={list} />}
     <section className='section-center'>
       <form className='grocery-form' onSubmit={handleSubmit}>
-        {alert.show && <Notify {...alert} removeAlert={showAlert} list={list} />}
-
         <h3>grocery bud</h3>
         <div className='form-control'>
           <input
@@ -98,6 +100,7 @@ function App() {
         </div>
       )}
     </section>
+  </body>
   );
 }
 

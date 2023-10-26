@@ -17,4 +17,6 @@ const Notify: React.FC<NotifyProps> = ({ type, msg, removeAlert, list }) => {
   return <p className={`alert alert-${type}`}>{msg}</p>;
 };
 
+
+
 export default Notify;
