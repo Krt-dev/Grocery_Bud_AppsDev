@@ -52,14 +52,17 @@ function App() {
   const showAlert = (show = false, type = '', msg = '') => {
     setAlert({ show, type, msg });
   };
+
   const clearList = () => {
     showAlert(true, 'danger', 'empty list');
     setList([]);
   };
+
   const removeItem = (id: string) => {
     showAlert(true, 'danger', 'item removed');
     setList(list.filter((item) => item.id !== id));
   };
+
   const editItem = (id: string) => {
     const specificItem = list.find((item) => item.id === id);
     setIsEditing(true);
@@ -68,6 +71,7 @@ function App() {
     setName(specificItem.title);
     }
   };
+
   useEffect(() => {
     localStorage.setItem('list', JSON.stringify(list));
   }, [list]);
@@ -87,7 +91,7 @@ function App() {
             onChange={(e) => setName(e.target.value)}
           />
           <button type='submit' className='submit-btn'>
-            {isEditing ? 'edit' : 'submit'}
+            {isEditing ? 'Edit' : 'submit'}
           </button>
         </div>
       </form>

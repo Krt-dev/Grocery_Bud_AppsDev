@@ -256,7 +256,7 @@ main {
   color: #010203;
 }
 .submit-btn:hover {
-  background: var(--clr-primary-5);
+  background: #5ac3aa ;
   color: var(--clr-white);
 }
 
@@ -297,7 +297,7 @@ main {
   transition: var(--transition);
 }
 .edit-btn {
-  color: var(--clr-green-light);
+  color: #010203;
   font-size: x-large;
 }
 .edit-btn:hover {

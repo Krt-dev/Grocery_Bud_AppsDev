@@ -1,5 +1,5 @@
-import React from 'react';
-import { BsTrash3Fill, BsFillPencilFill } from 'react-icons/bs';
+import React, { useState } from 'react';
+import { BsTrash3Fill, BsFillPencilFill, BsBagCheck } from 'react-icons/bs';
 
 interface ListItem{
   id: string;
@@ -10,9 +10,11 @@ interface GListProps {
   items: ListItem[];
   removeItem: (id: string) => void;
   editItem: (id: string) => void;
+  // strikeItems: (id: string) => void;
 }
 
 const GList: React.FC<GListProps> = ({ items, removeItem, editItem }) => {
+  const [isDisabled, setIsDisabled] = useState(false);
   return (
     <div className='grocery-list'>
       {items.map((item) => {
@@ -34,6 +36,12 @@ const GList: React.FC<GListProps> = ({ items, removeItem, editItem }) => {
                 onClick={() => removeItem(id)}
               >
                 <BsTrash3Fill />
+              </button>
+              <button  type = 'button'
+                className = 'edit-btn'
+                onClick={() => setIsDisabled(!isDisabled)}
+              >
+               <BsBagCheck/>
               </button>
             </div>
           </article>
