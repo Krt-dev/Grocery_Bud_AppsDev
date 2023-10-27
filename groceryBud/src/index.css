@@ -330,3 +330,7 @@ main {
 .clear-btn:hover {
   color: var(--clr-red-dark);
 }
+
+.strikethrough {
+  text-decoration: line-through;
+}

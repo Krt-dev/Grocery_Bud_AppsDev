@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BsTrash3Fill, BsFillPencilFill, BsBagCheck } from 'react-icons/bs';
+import { BsTrash3Fill, BsFillPencilFill,BsCartCheck } from 'react-icons/bs';
 
 interface ListItem{
   id: string;
@@ -10,18 +10,26 @@ interface GListProps {
   items: ListItem[];
   removeItem: (id: string) => void;
   editItem: (id: string) => void;
-  // strikeItems: (id: string) => void;
 }
 
 const GList: React.FC<GListProps> = ({ items, removeItem, editItem }) => {
-  const [isDisabled, setIsDisabled] = useState(false);
+  const [strikethroughItems, setStrikethroughItems] = useState<string[]>([]);
+
+  const toggleStrikethrough = (id: string) => {
+    if (strikethroughItems.includes(id)) {
+      setStrikethroughItems(strikethroughItems.filter((item) => item !== id));
+    } else {
+      setStrikethroughItems([...strikethroughItems, id]);
+    }
+  };
   return (
     <div className='grocery-list'>
       {items.map((item) => {
         const { id, title } = item;
+        const isStrikethrough = strikethroughItems.includes(id);
         return (
           <article className='grocery-item' key={id}>
-            <p className='title'>{title}</p>
+            <p className={`title ${isStrikethrough ? 'strikethrough' : ''}`}>{title}</p>
             <div className='btn-container'>
               <button
                 type='button'
@@ -37,11 +45,12 @@ const GList: React.FC<GListProps> = ({ items, removeItem, editItem }) => {
               >
                 <BsTrash3Fill />
               </button>
-              <button  type = 'button'
-                className = 'edit-btn'
-                onClick={() => setIsDisabled(!isDisabled)}
+              <button
+                type='button'
+                className='edit-btn'
+                onClick={() => toggleStrikethrough(id)}
               >
-               <BsBagCheck/>
+                <BsCartCheck/>
               </button>
             </div>
           </article>

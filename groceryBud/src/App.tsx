@@ -39,7 +39,7 @@ function App() {
       setName('');
       setEditID(null);
       setIsEditing(false);
-      showAlert(true, 'success', 'value changed');
+      showAlert(true, 'success', 'applied change');
     } else {
       showAlert(true, 'success', 'item added to the list');
       const newItem = { id: new Date().getTime().toString(), title: name };
@@ -54,7 +54,7 @@ function App() {
   };
 
   const clearList = () => {
-    showAlert(true, 'danger', 'empty list');
+    showAlert(true, 'danger', 'cleared list');
     setList([]);
   };
 
@@ -97,7 +97,7 @@ function App() {
       </form>
       {list.length > 0 && (
         <div className='grocery-container'>
-          <GList items={list} removeItem={removeItem} editItem={editItem} />
+          <GList items={list} removeItem={removeItem} editItem={editItem}/>
           <button className='clear-btn' onClick={clearList}>
             clear items
           </button>
